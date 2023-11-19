@@ -1,0 +1,280 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url('/img/fondo2.jpg');
+}
+.form-login{
+  width: 400px;
+  height: 340px;
+  background: #4e4d4d;
+  margin: auto;
+  margin-top: 180px;
+  margin-bottom: 100px;
+  box-shadow: 7px 13px 37px #000;
+  padding: 20px 30px;
+  border-top: 4px solid #017bab;
+  color: white;
+}
+
+.form-login h2{
+  margin: 0;
+  text-align: center;
+  height: 40px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid;
+  font-size: 20px;
+  color: white;
+}
+
+.controls {
+  width: 100%;
+  border: 1px solid #017bab;
+  margin-bottom: 15px;
+  padding: 11px 10px;
+  background: #252323;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+.buttons {
+  width: 100%;
+  height: 40px;
+  background: #017bab;
+  border: nane;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.form-login p{
+  height: 20px;
+  text-align:left;
+  border-bottom: 1px solid;
+}
+
+.form-login a{
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.form-login a:hover{
+  text-decoration: underline;
+}
+.contprinci{
+    background-image: url(img/fondo2.jpg);
+    background-size: cover;
+background-repeat: no-repeat;
+}
+.subcont{
+    margin-top: -150px;
+    margin-left: -350px;
+}
+
+.contenedor {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  
+  align-items: center;
+}
+
+
+.cuadro {
+  text-align: center;
+  padding: 20px;
+
+}
+
+.btns {
+  display: inline-block;
+  width: 300px;
+  height: 55px;
+  padding: 10px 20px;
+  background-color: #c01c1c;
+  color: #fff;
+  border: 2px solid #fff;
+
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.btns:hover {
+  background-color: #a81b1b;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+.navbar{
+    background-color: #1d1281;
+}
+table.table th {
+    background-color:  #1d1281;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #070707;
+    
+  }
+  table.table td {
+    background-color:  #cbc9e0;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    
+  }
+  .fondo{
+    background-image: url(img/fondo2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: -50px;
+}
+  
+.contenedorl{
+    display:grid;
+    grid-template-columns: 55% 45%;
+    height: 100vh;
+    margin-top: -10px;
+  
+  }
+  .izquierdo{
+    margin-right: 10px;
+    margin-left: 2px;
+    background-image: url(../img/logo.jpg); 
+    background-size: cover;
+  }
+  .principal{
+    margin-right: 120px;
+    background-color: rgb(255, 250, 250);
+  }
+  .usuario{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 300px;
+   
+    text-align: center;
+    background-color: rgb(250, 250, 250);
+  }
+  
+  .legend-center {
+    font-size: 22px;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: rgb(71, 70, 70);
+    font-style: italic;
+  }
+  
+  .cont-camp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 5px;
+  }
+  
+  .input-text {
+    
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+  
+  /* Opcionalmente, puedes agregar estilos adicionales para los campos específicos */
+  .campos label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 20px;
+  }
+  .campos label{
+    font-weight: 700;
+  }
+  
+  .boton{
+    margin-top: 20px;
+    background-color: rgb(0, 0, 0);
+    font-family: 'Roboto Slab', serif;
+    text-decoration: none;
+    color: white;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 7px;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .boton:hover{
+    cursor: pointer;
+  }
+  .welcome{
+      margin-top: 50px;
+      text-align: center;
+      font-size: 35px;
+      color: #000000;
+  }
+  
+  .form-group label{
+    color: #000000;
+  }
+
+body p {
+    text-align: justify;/*Deja el texto del parrafo justeificado*/
+    /*margin: 30px 0 20px;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+}
+body a {
+  color: white;
+}
+body img{
+  margin: 30px 0 20px;
+}
+.icono svg{
+  width: 30px;
+  height: 40px;
+  color:lightslategray;
+}
+
+ul{
+  list-style: none;/*Esconde las biñetas de la lista desordenada*/
+  margin-top: 20px;
+}
+
+ul li {
+  display: inline-block;/*Pone la organización de los íconos de forma Horizontal*/
+}
+
+ul li a{
+  padding: 10px 30px;/*Separa los iconos 20 pixeles cada uno*/
+  transition: all .5s ease-in-out; /*Tiempo que tarda el icono de red social en cambiar de color*/
+  display: block;
+}
+
+ul li a:hover {
+  color: #b9b9b9;/*Color del icono cuando el cursor está sobre el*/
+  transform: scale(1.3);/*Que tanto va a aumentar de tamaño el ícono de red social*/
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+ol li{
+  color: white;
+}
