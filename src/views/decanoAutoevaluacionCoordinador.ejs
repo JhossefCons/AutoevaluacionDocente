@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>autoevaluaciones coordinador</title>
+    <link rel="preload" href="css/style.css" as=" style">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-******************************" crossorigin="anonymous">
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1d1281;
+        }
+        
+        .navbar-brand {
+            flex-grow: 1;
+        }
+        
+        .table-container {
+            margin-top: 70px; 
+            overflow: auto;
+           
+            overflow-y: hidden;
+            width: 200%;
+        }
+        
+        .table-container table {
+            margin-bottom: 0;
+        }
+
+        .btn-create {
+            margin-right: 30px;
+        }
+
+        .custom-nav {
+            display: flex;
+            align-items: center;
+        }
+        .create-link {
+            margin-right: 9000px; 
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        .navbar-brand {
+            padding: 5;
+        }
+        
+        
+        .table-container table {
+            margin-bottom: 0;
+        }
+        .navbar {
+            position: relative;
+            z-index: 1;
+        }
+
+        details {
+            position: relative;
+            display: inline-block;
+            z-index: 2;
+        }
+
+        details summary {
+            cursor: pointer;
+        }
+
+        details ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #9b1a1a;
+        }
+
+        details ul li {
+            width: 100%;
+        }
+
+        details ul li a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+            width: 350px;
+        }
+        details summary {
+            cursor: pointer;
+            white-space: nowrap; 
+        }
+        details ul li a:hover {
+            background-color: #555;
+        }
+
+        details[open] ul {
+            display: block;
+        }
+        .fondo{
+            background-image: url(../img/fondo2.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-top: -46px;
+            height: 780px
+         
+        }
+       
+    
+</style>
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark  navbar-expand-lg">
+        <div class="navbar-brand"> 
+            <a>autoevaluaciones</a>
+            <details>
+                <summary>&#9776;</summary>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="btn btn-info" href="/decanoBandejaEntrada">Bandeja de entrada</a></li>
+                    <li class="nav-item"><a class="btn btn-info" href="/decanoAutoevaluaciones">Consultar autoevaluaciones</a></li>
+            </details>
+        </div>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> 
+                <a class="navbar-brand home-link" href="/decanoPrincipal"> 
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="fondo">
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12 table-container">
+                    <% if(data) { %>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <th>N</th>
+                            <th>nombre labor</th>
+                            <th>tipo labor</th>
+                            <th>horas</th>
+                            <th>descripcion</th>
+                            <th>acto</th>
+                            <th>fecha inicio</th>
+                            <th>fecha fin</th>
+                            <th>estado</th>
+                            <th>resultados</th>
+                            <th>evaluacion</th>
+                            <th>docente</th>
+                            <th>periodo</th>
+                            <th>recomendaciones</th>
+                            <th>sugerencias</th>
+                        </thead>
+                        <tbody>
+                            <% for (var i = 0; i < data.length ; i++){ %>
+                            <% if(data[i].activo !== 1) { continue; } %>
+                            <tr>
+                                <td><%= data[i].autoevaluation_id %></td>
+                                <td><%= data[i].labor_name %></td>
+                                <td><%= data[i].type_labor_name %></td>
+                                <td><%= data[i].labor_hours %></td>
+                                <td><%= data[i].labor_descripcion %></td>
+                                <td><%= data[i].acto %></td>
+                                <% if (data[i].date_init && typeof data[i].date_init === 'object' && data[i].date_init instanceof Date) { %>
+                                <td><%= data[i].date_init.toISOString().substring(0, 10) %></td>
+                                <% } else { %>
+                                <td></td>
+                                <% } %>
+    
+                                <% if (data[i].date_finish && typeof data[i].date_finish === 'object' && data[i].date_finish instanceof Date) { %>
+                                <td><%= data[i].date_finish.toISOString().substring(0, 10) %></td>
+                                <% } else { %>
+                                <td></td>
+                                <% } %>
+    
+                                <td><%= data[i].state %></td>
+                                <td><%= data[i].resultados %></td>
+                                <td><%= data[i].evaluacion %></td>
+                                <td><%= data[i].user_name + ' ' + data[i].user_lastname%></td>
+                                <td><%= data[i].period_name %></td>
+                                <td><%= data[i].recomendaciones %></td>
+                                <td><%= data[i].sugerencias %></td>
+                                <td>
+                                    <a class="btn btn-info" href="/decanoUpdateAutoevaluacionCoordinadorView/<%= data[i].autoevaluation_id %>">Update</a>
+                                    <form method="post"
+                                        action="/decanoEnviarNotificacion/<%= data[i].user_identification %>/<%= data[i].autoevaluation_id %>">
+                                        <button type="submit" class="btn btn-info">Notificar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+    <script>
+        Swal.fire({
+            title: '<%= alertTitle %>',
+            text: '<%= alertMessage %>',
+            icon: '<%= alertIcon %>',
+            showConfirmationButton: <%= showConfirmButton %>,
+            timer: <%= timer %>
+        }).then(() => {
+            window.location = '/<%= ruta %>'
+        })
+    </script>
+    <% } %>
+</body>
+
+</html>
