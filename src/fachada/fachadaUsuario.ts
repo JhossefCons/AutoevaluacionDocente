@@ -2,7 +2,7 @@ import { connection } from '../database/db';
 
 export const getUsers = (currentUser, callback) => {
     connection.query(
-        'SELECT u.*, r.*, ur.date_start, ur.date_finish FROM user u JOIN user_role ur ON u.user_identification = ur.user_identification JOIN role r ON ur.role_id = r.role_id WHERE user_email != ? ORDER BY u.user_identification',
+        'SELECT u.*, r.*, ur.date_start, ur.date_finish FROM user u JOIN userol ur ON u.user_identification = ur.user_identification JOIN rol r ON ur.role_id = r.role_id WHERE user_email != ? ORDER BY u.user_identification',
         [currentUser],
         (err, users) => {
             if (err) {
@@ -40,7 +40,7 @@ export const createUser = (userData, callback) => {
 };
   
 export const createUserRole = (userRoleData, callback) => {
-connection.query('INSERT INTO user_role SET ?', userRoleData, (err, result) => {
+connection.query('INSERT INTO userol SET ?', userRoleData, (err, result) => {
     if (err) {
     callback(err, null);
     } else {
@@ -51,7 +51,7 @@ connection.query('INSERT INTO user_role SET ?', userRoleData, (err, result) => {
 
 export const getUserByIdentification = (user_identification, callback) => {
     connection.query(
-        'SELECT u.*, ur.date_start, ur.date_finish, ur.role_id, ur.user_role_id FROM user u JOIN user_role ur ON u.user_identification = ur.user_identification WHERE u.user_identification = ?',
+        'SELECT u.*, ur.date_start, ur.date_finish, ur.role_id, ur.user_role_id FROM user u JOIN userole ur ON u.user_identification = ur.user_identification WHERE u.user_identification = ?',
         [user_identification],
         (err, result) => {
             if (err) {
@@ -74,7 +74,7 @@ export const updateUser = (user_id, user, callback) => {
 };
 
 export const updateUserRole = (user_role_id, userRole, callback) => {
-    connection.query('UPDATE user_role SET ? WHERE user_role_id = ?', [userRole, user_role_id], (err, result) => {
+    connection.query('UPDATE userol SET ? WHERE user_role_id = ?', [userRole, user_role_id], (err, result) => {
         if (err) {
             callback(err, null);
         } else {
