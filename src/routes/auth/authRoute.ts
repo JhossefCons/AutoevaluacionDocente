@@ -1,8 +1,12 @@
 import express from 'express';
 import { endSetion, login, paginaError, showLogin } from '../../controllers/auth/controllerLogin';
-import { checkAuth } from '../../middleware/auth';
+//import { checkAuth } from '../../middleware/auth';
 
 export const authRouter = express.Router();
+
+authRouter.get('/', (req, res) => {
+    res.redirect('/login');
+  });
 
 authRouter.get('/login',showLogin);
 authRouter.post('/login',login);

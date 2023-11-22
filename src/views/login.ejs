@@ -23,8 +23,8 @@
             <input class="buttons" type="submit" name="" value="Iniciar Sesión">
             <p><a href="#">¿Olvidaste tu contraseña?</a></p>-->
         <form  class="registro" action="/login" method="post">
-            <input type="text" name="email" class="controls" value="" placeholder="Correo">
-            <input type="password" name="password" class="controls" value="" placeholder="Contraseña">
+            <input type="text" name="email" class="controls" value="" placeholder="Correo" required>
+            <input type="password" name="password" class="controls" value="" placeholder="Contraseña" required>
             <input class="buttons" type="submit" name="" value="Iniciar Sesión">
         </form>
     </section>
@@ -84,8 +84,8 @@
     </div>
 -->
  
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!--> <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <% if(typeof alert != "undefined") { %>
         <script>
             Swal.fire({
@@ -98,7 +98,28 @@
                 window.location='/<%= ruta %>'
             })
         </script>
+    <% } %>-->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined" && alertMessage) { %>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmationButton: '<%= showConfirmButton %>',
+                    timer: <%= timer %>
+                }).then(() => {
+                    window.location = '/<%= ruta %>';
+                });
+            });
+        </script>
     <% } %>
+
+
+
 
 </body>
 </html>
