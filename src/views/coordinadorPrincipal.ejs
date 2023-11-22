@@ -64,31 +64,56 @@
         background-color: #1d1281;
     }
 </style>
-    <div class="contprinci">
-        <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-            <div class="bg-dark p-4">
-                <form class="container-fluid justify-content-start">
-                    <a class="navbar-brand" aria-current="page"  href="/coordinadorListPeriods">Crear periodo academico</a>
-                    <a class="navbar-brand" aria-current="page" href="/coordinadorCrudAutoevaluacion">Gestion autoevaluacion</a>
-                    <a class="navbar-brand" aria-current="page"  href="/coordinadorCRUDuser">Gestión docente</a>
-                    <a class="navbar-brand" aria-current="page"  href="/coordinadorCrudLabor">Gestion labor</a>
-                    <a class="navbar-brand" aria-current="page"  href="/coordinadorDiligenciarAutoevaluaciones">Realizar autoevaluacion</a>
-                    <a class="navbar-brand" aria-current="page"  href="/logout">Cerrar Sesión</a>
-                </form>
-            </div>
+<div class="contprinci">
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+        <div class="bg-dark p-4">
+            <form class="container-fluid justify-content-start">
+                <a class="navbar-brand" aria-current="page"  href="/coordinadorListPeriods">Crear periodo academico</a>
+                <a class="navbar-brand" aria-current="page" href="/coordinadorCrudAutoevaluacion">Gestion autoevaluacion</a>
+                <a class="navbar-brand" aria-current="page"  href="/coordinadorCRUDuser">Gestión docente</a>
+                <a class="navbar-brand" aria-current="page"  href="/coordinadorCrudLabor">Gestion labor</a>
+                <a class="navbar-brand" aria-current="page"  href="/coordinadorDiligenciarAutoevaluaciones">Realizar autoevaluacion</a>
+                <a class="navbar-brand" aria-current="page"  href="/logout">Cerrar Sesión</a>
+            </form>
         </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand text-left">Vista principal coordinador</a>
-                <a class="btn btn-info" href="/coordinadorBandejaEntrada">Bandeja de entrada</a>
-            </div>
-        </nav>        
-        <h3 style="color: white;">usuario: <%= userName %></h3>
-        <h3 style="color: white;">apellido: <%= userLastname %></h3>
     </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand text-left">Vista principal coordinador</a>
+            <a class="btn btn-info" href="/coordinadorBandejaEntrada">Bandeja de entrada</a>
+        </div>
+    </nav>        
+    <h3 style="color: white;">usuario: <%= userName %></h3>
+    <h3 style="color: white;">apellido: <%= userLastname %></h3>
+</div>
+<section class="form-gestion my-custom-center-class">
+    <button class="btn btn-primary" type="button">
+        <a class="navbar-brand" aria-current="page"  href="/coordinadorListPeriods">Crear periodo academico</a>
+    </button>
+    <br>
+    <button class="btn btn-primary" type="button">
+        <a class="navbar-brand" aria-current="page" href="/coordinadorCrudAutoevaluacion">Gestion autoevaluacion</a>
+    </button>
+    <br>
+    <button class="btn btn-primary" type="button">
+        <a class="navbar-brand" aria-current="page"  href="/coordinadorCRUDuser">Gestión docente</a>
+    </button>
+    <br>
+    <button class="btn btn-primary" type="button">
+        <a class="navbar-brand" aria-current="page"  href="/coordinadorCrudLabor">Gestion labor</a>
+    </button>
+    <br>
+    <button class="btn btn-primary" type="button">
+        <a class="navbar-brand" aria-current="page"  href="/coordinadorDiligenciarAutoevaluaciones">Realizar autoevaluacion</a>
+    </button>
+    <br>
+    <button class="btn btn-primary" type="button">
+        <a class="navbar-brand" aria-current="page"  href="/logout">Cerrar Sesión</a>
+    </button>
+</section>
     <nav class="navbar navbar-collapse bg-light">
         <div class="container-fluid">
             <div class="row">
