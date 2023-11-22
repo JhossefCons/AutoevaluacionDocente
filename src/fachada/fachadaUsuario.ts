@@ -23,6 +23,7 @@ export const getUserByEmail = (email,callback) => {
             }
             else{
                 console.log('identificacion:')
+                console.log(identification)
                 callback(null,identification);
             }
         }
