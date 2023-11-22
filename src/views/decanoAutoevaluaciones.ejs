@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>autoevaluaciones</title>
+    <link rel="preload" href="css/style.css" as=" style">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-******************************" crossorigin="anonymous">
+    
+    <style>
+
+        .custom-nav {
+            display: flex;
+            align-items: center;
+        }
+        .create-link {
+            margin-right: 9000px; 
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        .navbar-brand {
+            padding: 5;
+        }
+        
+        .table-container {
+            margin-top: 70px; 
+            overflow: auto;
+            height: calc(100vh - 70px); 
+        }
+        
+        .table-container table {
+            margin-bottom: 0;
+        }
+        .navbar {
+            position: relative;
+            z-index: 1;
+        }
+
+        details {
+            position: relative;
+            display: inline-block;
+            z-index: 2;
+        }
+
+        details summary {
+            cursor: pointer;
+        }
+
+        details ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #9b1a1a;
+        }
+
+        details ul li {
+            width: 100%;
+        }
+
+        details ul li a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+            width: 350px;
+        }
+        details summary {
+            cursor: pointer;
+            white-space: nowrap; 
+        }
+        details ul li a:hover {
+            background-color: #555;
+        }
+
+        details[open] ul {
+            display: block;
+        }
+        .fondo{
+            background-image: url(../img/fondo2.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-top: -76px;
+            height: 750px;
+        }
+        .form-group p{
+        color: black;
+        font-size: 17px;
+    }
+    .boton {
+    background-color: #f0f0f0;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 19px;
+  }
+
+  .boton:hover {
+    background-color: #ddd;
+  }
+  .table-container {
+            margin-top: 10px;
+            overflow: auto;
+            height: calc(690px); 
+        }
+</style>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-dark  navbar-expand-lg">
+        <div class="navbar-brand"> 
+            <a>autoevaluaciones</a>
+            <details>
+                <summary>&#9776;</summary>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="btn btn-info" href="/decanoBandejaEntrada">Bandeja de entrada</a></li>
+                    <li class="nav-item"><a class="btn btn-info" href="/decanoAutoevaluacionCoordinador">Consultar autoevaluacion coordinador</a></li>
+            </details>
+        </div>
+        <button id="btnMostrarReporte" class="boton">Mostrar Reporte</button>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> 
+                <a class="navbar-brand home-link" href="/decanoPrincipal"> 
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <br>
+
+    <div class="fondo">
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12 table-container">
+                    <% if(data) { %>
+                        <% var realizadas = []; %>
+                        <% var pendientes = []; %>
+                        
+                        <% for (var i = 0; i < data.length ; i++){ %>
+                            <% if(data[i].activo !== 1) { continue; } %> 
+                            
+                            <% if (data[i].resultados !== null && data[i].evaluacion !== null && data[i].resultados !== '' && data[i].evaluacion !== '') { %>
+                                <% realizadas.push(data[i]); %>
+                            <% } else { %>
+                                <% pendientes.push(data[i]); %>
+                            <% } %>
+                        <% } %>
+                        <% if (realizadas.length > 0) { %>
+                            <h3>Realizadas</h3>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <th>N</th>
+                                    <th>nombre labor</th>
+                                    <th>tipo labor</th>
+                                    <th>horas</th>
+                                    <th>descripcion</th>
+                                    <th>acto</th>
+                                    <th>fecha inicio</th>
+                                    <th>fecha fin</th>
+                                    <th>estado</th>
+                                    <th>resultados</th>
+                                    <th>evaluacion</th>
+                                    <th>docente</th>
+                                    <th>periodo</th>
+                                    <th>recomendaciones</th>
+                                    <th>sugerencias</th>
+                                </thead>
+                                <tbody>
+                                    <% for (var i = 0; i < realizadas.length ; i++){ %>
+                                        <tr>
+                                            <td><%= realizadas[i].autoevaluation_id %></td>
+                                            <td><%= realizadas[i].labor_name %></td>
+                                            <td><%= realizadas[i].type_labor_name %></td>
+                                            <td><%= realizadas[i].labor_hours %></td>
+                                            <td><%= realizadas[i].labor_descripcion %></td>
+                                            <td><%= realizadas[i].acto %></td>
+                                            <% if (realizadas[i].date_init && typeof realizadas[i].date_init === 'object' && realizadas[i].date_init instanceof Date) { %>
+                                                <td><%= realizadas[i].date_init.toISOString().substring(0, 10) %></td>
+                                            <% } else { %>
+                                                <td></td>
+                                            <% } %>
+                                            
+                                            <% if (realizadas[i].date_finish && typeof realizadas[i].date_finish === 'object' && realizadas[i].date_finish instanceof Date) { %>
+                                                <td><%= realizadas[i].date_finish.toISOString().substring(0, 10) %></td>
+                                            <% } else { %>
+                                                <td></td>
+                                            <% } %>
+                                            
+                                            <td><%= realizadas[i].state %></td>
+                                            <td><%= realizadas[i].resultados %></td>
+                                            <td><%= realizadas[i].evaluacion %></td>
+                                            <td><%= realizadas[i].user_name + ' ' + realizadas[i].user_lastname%></td>
+                                            <td><%= realizadas[i].period_name %></td>
+                                            <td> 
+                                                <% if (realizadas[i].recomendaciones !== undefined && realizadas[i].recomendaciones !== '') { %>
+                                                  <%= realizadas[i].recomendaciones %>
+                                                <% } %>
+                                              </td>
+                                              
+                                              <td> 
+                                                <% if (realizadas[i].sugerencias !== undefined && realizadas[i].sugerencias !== '') { %>
+                                                  <%= realizadas[i].sugerencias %>
+                                                <% } %>
+                                              </td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        <% } %>
+                        <% if (pendientes.length > 0) { %>
+                            <h3>Pendientes</h3>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <th>N</th>
+                                    <th>nombre labor</th>
+                                    <th>tipo labor</th>
+                                    <th>horas</th>
+                                    <th>descripcion</th>
+                                    <th>acto</th>
+                                    <th>fecha inicio</th>
+                                    <th>fecha fin</th>
+                                    <th>estado</th>
+                                    <th>resultados</th>
+                                    <th>evaluacion</th>
+                                    <th>docente</th>
+                                    <th>periodo</th>
+                                    <th>recomendaciones</th>
+                                    <th>sugerencias</th>
+                                </thead>
+                                <tbody>
+                                    <% for (var i = 0; i < pendientes.length ; i++){ %>
+                                        <tr>
+                                            <td><%= pendientes[i].autoevaluation_id %></td>
+                                            <td><%= pendientes[i].labor_name %></td>
+                                            <td><%= pendientes[i].type_labor_name %></td>
+                                            <td><%= pendientes[i].labor_hours %></td>
+                                            <td><%= pendientes[i].labor_descripcion %></td>
+                                            <td><%= pendientes[i].acto %></td>
+                                            <% if (pendientes[i].date_init && typeof pendientes[i].date_init === 'object' && pendientes[i].date_init instanceof Date) { %>
+                                                <td><%= pendientes[i].date_init.toISOString().substring(0, 10) %></td>
+                                            <% } else { %>
+                                                <td></td>
+                                            <% } %>
+                                            
+                                            <% if (pendientes[i].date_finish && typeof pendientes[i].date_finish === 'object' && pendientes[i].date_finish instanceof Date) { %>
+                                                <td><%= pendientes[i].date_finish.toISOString().substring(0, 10) %></td>
+                                            <% } else { %>
+                                                <td></td>
+                                            <% } %>
+                                            
+                                            <td><%= pendientes[i].state %></td>
+                                            <td><%= pendientes[i].resultados %></td>
+                                            <td><%= pendientes[i].evaluacion %></td>
+                                            <td><%= pendientes[i].user_name + ' ' + pendientes[i].user_lastname%></td>
+                                            <td><%= pendientes[i].period_name %></td>
+                                            <td> 
+                                                <% if (pendientes[i].recomendaciones !== undefined && pendientes[i].recomendaciones !== '') { %>
+                                                  <%= pendientes[i].recomendaciones %>
+                                                  <% }  %>
+                                            </td>
+                                            <td> 
+                                            <% if (pendientes[i].sugerencias !== undefined && pendientes[i].sugerencias !== '') { %>
+                                                <%= pendientes[i].sugerencias %>
+                                            <% } %>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>' ,
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmationButton: <%= showConfirmButton %>,
+                timer:<%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>' ,
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmationButton: <%= showConfirmButton %>,
+                timer:<%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+    <script>
+        document.getElementById("btnMostrarReporte").addEventListener("click", function() {
+            mostrarReporte();
+        });
+
+        function mostrarReporte() {
+            var data = JSON.parse('<%- JSON.stringify(data) %>');
+
+            var usuariosConIdentificacion = data.filter(function(user) {
+                return user.activo === 1 && user.user_identification;
+            });
+
+            var conteoPorIdentificacion = {};
+            usuariosConIdentificacion.forEach(function(user) {
+                if (conteoPorIdentificacion.hasOwnProperty(user.user_identification)) {
+                    conteoPorIdentificacion[user.user_identification].count++;
+                } else {
+                    conteoPorIdentificacion[user.user_identification] = {
+                        count: 1,
+                        name: user.user_name,
+                        lastname: user.user_lastname
+                    };
+                }
+            });
+
+            var recuentoTotal = usuariosConIdentificacion.length;
+            Object.keys(conteoPorIdentificacion).forEach(function(key) {
+                var count = conteoPorIdentificacion[key].count;
+                var porcentaje = (count / recuentoTotal) * 100;
+                conteoPorIdentificacion[key].porcentaje = porcentaje.toFixed(2); 
+            });
+
+            var nombresApellidos = Object.values(conteoPorIdentificacion).map(function(item) {
+                return item.name + ' ' + item.lastname;
+            });
+
+            var porcentajes = Object.values(conteoPorIdentificacion).map(function(item) {
+                return item.porcentaje;
+            });
+
+            var coloresFondo = [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)'
+            ];
+
+            var informeHTML = '<h3>Porcentaje de autoevaluaciones por docente</h3>';
+            informeHTML += '<canvas id="graficoDonut"></canvas>';
+            Swal.fire({
+                title: 'Informe',
+                html: informeHTML,
+                icon: 'info',
+                confirmButtonText: 'Cerrar',
+                didOpen: function() {
+                    var ctx = document.getElementById('graficoDonut').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: nombresApellidos,
+                            datasets: [{
+                                data: porcentajes,
+                                backgroundColor: coloresFondo,
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom'
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            var label = context.label || '';
+                                            var value = context.parsed || 0;
+                                            return label + ': ' + value + '%';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

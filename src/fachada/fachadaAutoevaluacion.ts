@@ -42,7 +42,9 @@ export const getAutoevaluaciones = (callback) => {
 
 export const getCodeLabor = () => {
   return new Promise((resolve, reject) => {
-    connection.query('SELECT labor_code FROM labor WHERE activo = 1 ORDER BY labor_code', (err, codes) => {
+
+    connection.query(`SELECT labor_code FROM labor WHERE activo = 1 ORDER BY labor_code`, (err, codes) => {
+
       if (err) {
         reject(err);
       } else {
@@ -54,6 +56,7 @@ export const getCodeLabor = () => {
 
 export const getIdentificationUser = () => {
   return new Promise((resolve, reject) => {
+
     connection.query('SELECT  user_identification FROM user WHERE activo = 1 ORDER BY user_identification', (err, identifications) => {
       if (err) {
         reject(err);
