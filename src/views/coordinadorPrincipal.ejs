@@ -82,7 +82,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand text-left">Vista principal coordinador</a>
+                <a class="navbar-brand text-left">COORDINADOR</a>
                 <a class="btn btn-info" href="/coordinadorBandejaEntrada">Bandeja de entrada</a>
             </div>
         </nav>        
@@ -138,8 +138,8 @@
                 title: '<%= alertTitle %>' ,
                 text: '<%= alertMessage %>',
                 icon: '<%= alertIcon %>',
-                showConfirmationButton: <%= showConfirmButton %>,
-                timer:<%= timer %>
+                showConfirmationButton: '<%= showConfirmButton %>',
+                timer:'<%= timer %>'
             }).then(()=>{
                 window.location='/<%= ruta %>'
             })
