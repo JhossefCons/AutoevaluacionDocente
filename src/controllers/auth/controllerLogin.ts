@@ -10,9 +10,7 @@ export const showLogin = (req, res) => {
   res.render('login');
 }
 
-export const paginaError = (req,res) => {
-  res.render('error');
-}
+
 
 export const endSetion =(req,res) =>{
     req.session.destroy(()=>{
@@ -27,7 +25,9 @@ export const endSetion =(req,res) =>{
         })
     })
 }
-
+export const paginaError = (req,res) => {
+  res.render('error');
+}
 export const login = async (req, res) => {
     try {
       const email = req.body.email;
@@ -113,3 +113,5 @@ export const login = async (req, res) => {
       console.log(err);
     }
 };
+
+
