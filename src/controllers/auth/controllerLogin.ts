@@ -65,8 +65,12 @@ export const login = async (req, res) => {
                 console.log(err2);
               } else {
                 req.session.loggedin = true;
-                req.session.username = result[0].user_email;
+                req.session.username = result[0].user_name;
                 req.session.role = result2[0].role_id;
+                req.session.userlastname = result2[0].user_lastname;
+                req.session.user_gender = result2[0].user_gender;
+                req.session.userstudies = result2[0].user_studies;
+                req.session.useremail = result2[0].user_email;
   
                 if (result2[0].role_id == 1) {
                   console.log('Redireccionar al menú docente');

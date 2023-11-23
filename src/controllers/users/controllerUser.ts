@@ -5,8 +5,25 @@ import { getInfoUser,getUsers,createUser, createUserRole ,getUserByIdentificatio
 
 export const showCoordinadorPrincipal = (req, res) => {
     res.render('coordinadorPrincipal',{
-      user: req.session.username
+      userName: req.session.username,
+      userLastname: req.session.userlastname
     });
+}
+
+export const showDocentePrincipal = (req, res) => {
+  res.render('docentePrincipal',{
+    user: req.session.username
+  });
+}
+
+export const showInformacionDocente = (req, res) => {
+  res.render('docenteInformacionPersonal');
+}
+
+export const showDecanoPrincipal = (req,res) => {
+  res.render('decanoPrincipal',{
+    user: req.session.username
+  });
 }
 
 export const coordinadorCRUDuser = (req, res) => {
@@ -184,16 +201,6 @@ export const updateDocente = (req, res) => {
     }
 };
 
-export const showDocentePrincipal = (req, res) => {
-  res.render('docentePrincipal',{
-    user: req.session.username
-  });
-}
-
-export const showInformacionDocente = (req, res) => {
-  res.render('docenteInformacionPersonal');
-}
-
 export const informacionDocente = (req, res) => {
   const user = req.session.username;
   console.log(user);
@@ -209,8 +216,3 @@ export const informacionDocente = (req, res) => {
   });
 }
 
-export const showDecanoPrincipal = (req,res) => {
-  res.render('decanoPrincipal',{
-    user: req.session.username
-  });
-}
