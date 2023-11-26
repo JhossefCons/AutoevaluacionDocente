@@ -80,6 +80,8 @@ export const createDocente = async (req, res) => {
         },
         async (err, userResult) => {
           if (err) {
+            console.log("ERROR AL CREAR EL USUARIO");
+            console.log(err);
             res.render('coordinadorCreateUser', {
               alert: true,
               alertTitle: 'Error',

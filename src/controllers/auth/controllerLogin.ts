@@ -10,9 +10,7 @@ export const showLogin = (req, res) => {
   res.render('login');
 }
 
-export const paginaError = (req,res) => {
-  res.render('error');
-}
+
 
 export const endSetion =(req,res) =>{
     req.session.destroy(()=>{
@@ -27,7 +25,9 @@ export const endSetion =(req,res) =>{
         })
     })
 }
-
+export const paginaError = (req,res) => {
+  res.render('error');
+}
 export const login = async (req, res) => {
     try {
       const email = req.body.email;
@@ -43,6 +43,7 @@ export const login = async (req, res) => {
           //console.log(result[0].user_password);
           //console.log(result[0].user_email);
           if (result.length == 0 || password != result[0].user_password || email != result[0].user_email) {
+          //if (result.length === 0 || !(await bcryptjs.compare(password, result[0].user_password))) {
             //console.log(result[0].user_password+" consultada");
             //console.log(password+" contraseña ingresada");
             //console.log(result.length+" tamanio");
@@ -113,3 +114,5 @@ export const login = async (req, res) => {
       console.log(err);
     }
 };
+
+

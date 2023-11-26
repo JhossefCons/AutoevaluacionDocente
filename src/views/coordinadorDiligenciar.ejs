@@ -211,8 +211,8 @@
                 title: '<%= alertTitle %>' ,
                 text: '<%= alertMessage %>',
                 icon: '<%= alertIcon %>',
-                showConfirmationButton: <%= showConfirmButton %>,
-                timer:<%= timer %>
+                showConfirmationButton: '<%= showConfirmButton %>',
+                timer:'<%= timer %>'
             }).then(()=>{
                 window.location='/<%= ruta %>'
             })
