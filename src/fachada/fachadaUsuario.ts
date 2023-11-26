@@ -51,7 +51,7 @@ connection.query('INSERT INTO userol SET ?', userRoleData, (err, result) => {
 
 export const getUserByIdentification = (user_identification, callback) => {
     connection.query(
-        'SELECT u.*, ur.date_start, ur.date_finish, ur.role_id, ur.user_role_id FROM user u JOIN userole ur ON u.user_identification = ur.user_identification WHERE u.user_identification = ?',
+        'SELECT u.*, ur.date_start, ur.date_finish, ur.role_id, ur.user_role_id FROM user u JOIN userol ur ON u.user_identification = ur.user_identification WHERE u.user_identification = ?',
         [user_identification],
         (err, result) => {
             if (err) {

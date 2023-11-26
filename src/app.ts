@@ -6,7 +6,7 @@ import { authRouter } from './routes/auth/authRoute';
 import { userRouter } from './routes/users/userRoute';
 import { laborRouter } from './routes/labores/laboresRoute';
 import { periodoRouter } from './routes/periodoAcademico/periodRoute';
-//import { autoEvaluationRouter } from './routes/autoevaluacion/autoevaluacionRoute';
+import { autoEvaluationRouter } from './routes/autoevaluacion/autoevaluacionRoute';
 import {notificacionRouter} from './routes/notificaciones/notificacionesRoute';
 import { checkAuth, checkUserAccess } from './middleware/auth'; // Importa el middleware checkAuth
 export const app = express();
@@ -35,7 +35,7 @@ app.use('/',authRouter);
 app.use('/',checkAuth,userRouter);
 app.use('/',checkAuth, laborRouter);
 app.use('/',checkAuth,periodoRouter);
-//app.use('/',checkAuth,autoEvaluationRouter);
+app.use('/',checkAuth,autoEvaluationRouter);
 //app.use('/',checkAuth,userRouter);
 app.use('/',checkAuth,notificacionRouter);
 
