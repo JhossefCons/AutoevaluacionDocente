@@ -328,21 +328,6 @@
     <% } %>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <% if(typeof alert != "undefined") { %>
-        <script>
-            Swal.fire({
-                title: '<%= alertTitle %>' ,
-                text: '<%= alertMessage %>',
-                icon: '<%= alertIcon %>',
-                showConfirmationButton: <%= showConfirmButton %>,
-                timer:<%= timer %>
-            }).then(()=>{
-                window.location='/<%= ruta %>'
-            })
-        </script>
-    <% } %>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
     <script>
         document.getElementById("btnMostrarReporte").addEventListener("click", function() {
