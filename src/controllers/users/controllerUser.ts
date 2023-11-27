@@ -202,15 +202,17 @@ export const updateDocente = (req, res) => {
 };
 
 export const informacionDocente = (req, res) => {
-  const user = req.session.username;
-  console.log(user);
-  getInfoUser(user, (err, users) => {
+  const email = req.session.useremail;
+  console.log("Informacion Personal");
+  console.log(email);
+  getInfoUser(email, (err, users) => {
     if (err) {
         res.json(err);
     } else {
+        console.log("Informacion Personal encontrada");
         console.log(users);
         res.render('docenteInformacionPersonal', {
-            data: users
+          data: users
         });
     }
   });
