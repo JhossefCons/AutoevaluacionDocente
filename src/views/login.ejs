@@ -13,15 +13,11 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <h1 class="center">Bienvenido Sistema de Autoevaluación Docente</h1>
+            <h1 class="center">Bienvenido al sistema de Autoevaluación Docente</h1>
         </div>
     </nav>
     <section class="form-login">
         <h2>Iniciar Sesión</h2>
-        <!--<input class="controls" type="email" name="usuario" value="" placeholder="Correo">
-            <input class="controls" type="password" name="password" value="" placeholder="Contraseña">
-            <input class="buttons" type="submit" name="" value="Iniciar Sesión">
-            <p><a href="#">¿Olvidaste tu contraseña?</a></p>-->
         <form  class="registro" action="/login" method="post">
             <input type="text" name="email" class="controls" value="" placeholder="Correo" required>
             <input type="password" name="password" class="controls" value="" placeholder="Contraseña" required>
@@ -71,34 +67,6 @@
     <footer class="container-fluid text-dark">
         <p style="text-align: center;">2023 &copy; Desarrollado por Guillermo Peña Muñoz</p>
     </footer>
-    <!--<div class="contenedorl">
-        <div class="principal">
-            <h2 class="welcome" style="color: rgb(0, 0, 0);">Bienvenido</h2>
-            <div class="cont-camp">
-                <div class="legend-center">Ingrese su usuario y contraseña</div>
-                
-            </div>   
-        </div>
-        <div class="izquierdo">
-        </div>
-    </div>
--->
- 
-    
-    <!--> <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <% if(typeof alert != "undefined") { %>
-        <script>
-            Swal.fire({
-                title: '<%= alertTitle %>' ,
-                text: '<%= alertMessage %>',
-                icon: '<%= alertIcon %>',
-                showConfirmationButton:' <%= showConfirmButton %>',
-                timer:<%= timer %>
-            }).then(()=>{
-                window.location='/<%= ruta %>'
-            })
-        </script>
-    <% } %>-->
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
