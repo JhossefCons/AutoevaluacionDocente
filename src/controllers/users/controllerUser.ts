@@ -147,9 +147,10 @@ export const showUpdateDocente = (req, res) => {
 
 export const updateDocente = (req, res) => {
     try {
-        const { user_id, user_role_id } = req.params;
+        const { user_identification, user_role_id } = req.params;
         const { user_name, user_lastname, user_gender, user_email, user_studies, activo, user_tipoDocente, date_start, date_finish, role_id } = req.body;
-
+        console.log("----------------IDENTIFICACION PARA ACTUALIZAR---------------------");
+        console.log(user_identification);
         const user = {
             user_name,
             user_lastname,
@@ -168,7 +169,7 @@ export const updateDocente = (req, res) => {
         };
         console.log("----------------DATOS ACTUALIZACION DOCENTE ROLE---------------------");
         console.log(userRole);
-        updateUser(user_id, user, (err, result) => {
+        updateUser(user_identification, user, (err, result) => {
             if (err) {
                 console.log(err);
             } else {

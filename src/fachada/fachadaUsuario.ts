@@ -64,8 +64,8 @@ export const getUserByIdentification = (user_identification, callback) => {
     );
 };
 
-export const updateUser = (user_id, user, callback) => {
-    connection.query('UPDATE user SET ? WHERE user_id = ?', [user, user_id], (err, result) => {
+export const updateUser = (user_identification, user, callback) => {
+    connection.query('UPDATE user SET ? WHERE user_identification = ?', [user, user_identification], (err, result) => {
         if (err) {
             callback(err, null);
         } else {

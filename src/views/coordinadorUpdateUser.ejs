@@ -37,7 +37,7 @@
                 <div class="col-md-5" style="margin: auto; margin-top: 100px; margin-bottom: 100px;">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/coordinadorUpdateUser/<%= data.user_id %>/<%= data.user_role_id %>" method="post">
+                            <form action="/coordinadorUpdateUser/<%= data.user_identification %>/<%= data.user_role_id %>" method="post">
                                 <div class="form-group">
                                     <p for="user_name">Nombre</p>
                                     <input type="text" id="user_name" name="user_name" value="<%= data.user_name %>" class="form-control" >
