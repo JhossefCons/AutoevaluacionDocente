@@ -135,9 +135,10 @@ export const showUpdateDocente = (req, res) => {
           if (err) {
               console.log(err);
           } else {
-              const user = result[0];
+              const user = result[0];  
+              console.log("----Datos para actualizar vista----");
               console.log(user);
-              res.render('coordinadorUpdateuser', {
+              res.render('coordinadorUpdateuser', {     
                   data: user
               });
           }
@@ -158,13 +159,15 @@ export const updateDocente = (req, res) => {
             activo,
             user_tipoDocente
         };
-
+        console.log("----------------DATOS ACTUALIZACION DOCENTE USER---------------------");
+        console.log(user);
         const userRole = {
             date_start,
             date_finish,
             role_id
         };
-
+        console.log("----------------DATOS ACTUALIZACION DOCENTE ROLE---------------------");
+        console.log(userRole);
         updateUser(user_id, user, (err, result) => {
             if (err) {
                 console.log(err);

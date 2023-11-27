@@ -99,7 +99,7 @@ export const createAutoevaluacion = async (req, res) => {
             dataPeriods: periods,
             alert: true,
             alertTitle: "Registro Fallido",
-            alertMessage: "!Autoevaluacion NO registrada!",
+            alertMessage: "!No se puede registar autoevaluacion al Decano!",
             alertIcon: "error",
             showConfirmButton: false,
             timer: 1500,
