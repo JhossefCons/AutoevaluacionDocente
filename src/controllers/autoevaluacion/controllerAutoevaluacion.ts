@@ -2,6 +2,7 @@ import { Result } from 'express-validator';
 import { connection } from '../../database/db';
 import {getAutoevaluacionesDocente,getIdPeriodo,getCodeLabor,getIdentificationUser,getAutoevaluacionesDiligenciar,getAutoevaluaciones ,insertAutoevaluacion, updateAutoevaluationByCode,getAutoevaluationByCode, getAutoevaluationCoordinaor} from '../../fachada/fachadaAutoevaluacion';
 import { getUserByEmail } from '../../fachada/fachadaUsuario';
+import { getUserRole } from '../../fachada/fachadaLogin';
 import {almacenarMensaje } from '../../observador/observadorNotificacion';
 import { notificarRelizacionAutoevaluacionCoordinador } from '../notificaciones/controllerNotificaciones';
 import { notificarRelizacionAutoevaluacionDocente,notificarAsignacionAutoevaluacion } from '../notificaciones/controllerNotificaciones';
@@ -16,6 +17,7 @@ export const coordinadorCrudAutoevaluacion = (req,res) => {
         console.log(err)
       }
       else{
+          console.log("----------------------Datos para Autoevaluacion---------------------------");
           console.log(autoevaluaciones);
           res.render('coordinadorCrudAutoevaluacion',{
             data:autoevaluaciones
@@ -60,26 +62,50 @@ export const createAutoevaluacion = async (req, res) => {
       recomendaciones: recomendaciones
     };
     console.log(autoevaluacionData)
-    insertAutoevaluacion(autoevaluacionData, (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        const autoevaluacionId = result.insertId;
-        notificarAsignacionAutoevaluacion(req,res,autoevaluacionId,user_identification);
-        console.log('Autoevaluación registrada');
-        res.render('coordinadorCreateAutoevaluacion', {
-          dataIdentifications: identifications,
-          dataCode: codes,
-          dataPeriods: periods,
-          alert: true,
-          alertTitle: "Registro completado",
-          alertMessage: "!Autoevaluacion registrada!",
-          alertIcon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-          ruta: 'coordinadorCrudAutoevaluacion'
-        });
-        //res.redirect('/coordinadorCrudAutoevaluacion');
+
+    getUserRole(autoevaluacionData.user_identification, async (err2, auxRole) => {
+      console.log("------------------Role encontrado en la autoevaluacion---------------------");
+      console.log(auxRole);
+      if (err2) {
+        console.log(err2);
+      }else{
+        if(auxRole[0].role_id!=2){
+          insertAutoevaluacion(autoevaluacionData, (err, result) => {
+            if (err) {
+              console.log(err);
+            } else {
+              const autoevaluacionId = result.insertId;
+              notificarAsignacionAutoevaluacion(req,res,autoevaluacionId,user_identification);
+              console.log('Autoevaluación registrada');
+              res.render('coordinadorCreateAutoevaluacion', {
+                dataIdentifications: identifications,
+                dataCode: codes,
+                dataPeriods: periods,
+                alert: true,
+                alertTitle: "Registro completado",
+                alertMessage: "!Autoevaluacion registrada!",
+                alertIcon: "success",
+                showConfirmButton: false,
+                timer: 1500,
+                ruta: 'coordinadorCrudAutoevaluacion'
+              });
+              //res.redirect('/coordinadorCrudAutoevaluacion');
+            }
+          });
+        }else{
+          res.render('coordinadorCreateAutoevaluacion', {
+            dataIdentifications: identifications,
+            dataCode: codes,
+            dataPeriods: periods,
+            alert: true,
+            alertTitle: "Registro Fallido",
+            alertMessage: "!Autoevaluacion NO registrada!",
+            alertIcon: "error",
+            showConfirmButton: false,
+            timer: 1500,
+            ruta: 'coordinadorCrudAutoevaluacion'
+          });
+        }
       }
     });
   } catch (err) {
@@ -207,7 +233,7 @@ export const diligenciarAutoevaluation = (req, res) => {
   const autoevaluacionData = {
     resultados:resultados,
     evaluacion:evaluacion,
-    sugerencias: sugerencias
+    sugerencias: sugerencias,
   };
 
   updateAutoevaluationByCode(autoevaluation_id, autoevaluacionData, (err, result) => {
@@ -238,7 +264,7 @@ export const showConsultarAutoevaluacionesArchivo = (req,res) => {
 
 export const consultarAutoevaluacionesArchivo = (req,res) => {
   const email = req.session.useremail;
-  console.log(email)
+  console.log("Entrando a Autoevaluaciones")
   getAutoevaluacionesDocente(email,(err,autoevaluaciones) =>{
     if(err){
       console.log(err)
@@ -342,7 +368,7 @@ export const showDecanoAutoevaluationCoordinador = (req, res) => {
 }
 
 export const decanoAutoevaluationCoordinador = (req, res) => {
-  const coordinadorId = '1002963849';
+  const coordinadorId = '300';
   getAutoevaluationCoordinaor (coordinadorId,(err,autoevaluacion) =>{
     if(err){
       console.log(err);

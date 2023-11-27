@@ -124,8 +124,10 @@ export const getAutoevaluationByCode = (autoevaluationId, callback) => {
   });
 };
 
-export const updateAutoevaluationByCode = (autoevaluationId, laborData, callback) => {
-  connection.query('UPDATE autoevaluation SET ? WHERE autoevaluation_id = ?', [laborData, autoevaluationId], (err, result) => {
+export const updateAutoevaluationByCode = (autoevaluationId, autoevaluacionData, callback) => {
+  console.log("-------------------actualizar autoevaluacion----------------------");
+  console.log(autoevaluacionData);
+  connection.query('UPDATE autoevaluation SET ? WHERE autoevaluation_id = ?', [autoevaluacionData, autoevaluationId], (err, result) => {
       if (err) {
           callback(err, null);
       } else {
