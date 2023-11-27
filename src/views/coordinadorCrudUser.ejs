@@ -47,9 +47,8 @@
                             <th>acciones</th>
                         </thead>
                         <tbody>
-                            <% if(data) { %>
-                                <% for (var i = 0; i < data.length ; i++){ %>
-                                    <% if(data[i].activo !== 1) { continue; } %> 
+                            <% if (data) { %>
+                                <% for (var i = 0; i < data.length; i++) { %>
                                     <% var startDate = new Date(data[i].date_start); %>
                                     <% var endDate = new Date(data[i].date_finish); %>
                             
@@ -63,9 +62,11 @@
                                         <td><%= data[i].user_tipoDocente %></td>
                                         <td><%= startDate.toISOString().substring(0, 10) %></td>
                                         <td><%= endDate.toISOString().substring(0, 10) %></td>
-                                        <td>
+                                        <td >
                                             <% if (data[i].activo === 1) { %>
                                                 &#9989;
+                                            <% }else { %>
+                                                &#10060;
                                             <% } %>
                                         </td>
                                         <td>
@@ -73,7 +74,7 @@
                                         </td>
                                     </tr>
                             
-                                <% }%>   
+                                <% } %>
                             <% } %>
                         </tbody>
                     </table>
