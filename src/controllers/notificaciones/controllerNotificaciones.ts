@@ -5,7 +5,8 @@ import { notificarUser } from "../../observador/observadorNotificacion";
 
 export const CoordinadorAlmacenarNotificacion = (req,res) => {
   const {user_identification , autoevaluacion_id} = req.params;
-  const email = req.session.username;
+  const email = req.session.useremail
+  console.log("Correo de usuario a buscar: "+email)
   getUserByEmail(email,(err,emisor_identification) =>{
     if(err){
       console.log(err);
@@ -48,7 +49,7 @@ export const CoordinadorAlmacenarNotificacion = (req,res) => {
 
 export const notificarAsignacionAutoevaluacion = (req,res,autoevaluacion_id,user_identification) => {
   const userIdentificationRecep = user_identification;
-  const email = req.session.username;
+  const email = req.session.useremail;
   getUserByEmail(email,(err,emisor_identification) =>{
     if(err){
       console.log(err);
@@ -81,7 +82,7 @@ export const notificarAsignacionAutoevaluacion = (req,res,autoevaluacion_id,user
 
 export const notificarRelizacionAutoevaluacionCoordinador = (req,res,autoevaluacion_id) => {
   const user_identification = '1006';
-  const email = req.session.username;
+  const email = req.session.useremail;
   getUserByEmail(email,(err,emisor_identification) =>{
     if(err){
       console.log(err);
@@ -114,7 +115,7 @@ export const notificarRelizacionAutoevaluacionCoordinador = (req,res,autoevaluac
 
 export const notificarRelizacionAutoevaluacionDocente = (req,res,autoevaluacion_id) => {
   const user_identification = '1002963849';
-  const email = req.session.username;
+  const email = req.session.useremail;
   getUserByEmail(email,(err,emisor_identification) =>{
     if(err){
       console.log(err);
@@ -183,7 +184,7 @@ export const bandejaEntradaDocente = (req,res) => {
 
 export const DecanoAlmacenarNotificacion = (req,res) => {
   const {user_identification , autoevaluacion_id} = req.params;
-  const email = req.session.username;
+  const email = req.session.useremail;
   getUserByEmail(email,(err,emisor_identification) =>{
     if(err){
       console.log(err);

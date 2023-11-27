@@ -170,7 +170,7 @@ export const showCoordinadorDiligenciar = (req,res) =>{
 }
 
 export const coordinadorAutoevaluaciones = (req,res) => {
-  const email = req.session.username; 
+  const email = req.session.useremail; 
   getAutoevaluacionesDiligenciar(email,(err,autoevaluaciones) =>{
       if(err){
           console.log(err)
@@ -237,7 +237,7 @@ export const showConsultarAutoevaluacionesArchivo = (req,res) => {
 }
 
 export const consultarAutoevaluacionesArchivo = (req,res) => {
-  const email = req.session.username;
+  const email = req.session.useremail;
   console.log(email)
   getAutoevaluacionesDocente(email,(err,autoevaluaciones) =>{
     if(err){
@@ -257,7 +257,7 @@ export const showDocenteDiligenciar = (req,res) =>{
 }
 
 export const docenteAutoevaluaciones = (req,res) => {
-  const email = req.session.username; 
+  const email = req.session.useremail; 
   getAutoevaluacionesDiligenciar(email,(err,autoevaluaciones) =>{
       if(err){
           console.log(err)
