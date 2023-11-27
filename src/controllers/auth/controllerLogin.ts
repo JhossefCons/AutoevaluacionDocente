@@ -40,13 +40,8 @@ export const login = async (req, res) => {
         } else {
           console.log("DATOS RETORNADOS");
           console.log(result);
-          //console.log(result[0].user_password);
-          //console.log(result[0].user_email);
           //if (result.length == 0 || password != result[0].user_password || email != result[0].user_email) {
           if (result.length === 0 || !(await bcryptjs.compare(password, result[0].user_password))) {
-            //console.log(result[0].user_password+" consultada");
-            //console.log(password+" contraseña ingresada");
-            //console.log(result.length+" tamanio");
             res.render('login', {
               alert: true,
               alertTitle: "Error",
