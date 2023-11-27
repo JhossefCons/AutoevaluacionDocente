@@ -81,7 +81,7 @@ export const notificarAsignacionAutoevaluacion = (req,res,autoevaluacion_id,user
 }
 
 export const notificarRelizacionAutoevaluacionCoordinador = (req,res,autoevaluacion_id) => {
-  const user_identification = '1006';
+  const user_identification = '300';
   const email = req.session.useremail;
   getUserByEmail(email,(err,emisor_identification) =>{
     if(err){
@@ -114,7 +114,7 @@ export const notificarRelizacionAutoevaluacionCoordinador = (req,res,autoevaluac
 }
 
 export const notificarRelizacionAutoevaluacionDocente = (req,res,autoevaluacion_id) => {
-  const user_identification = '1002963849';
+  const user_identification = '100';
   const email = req.session.useremail;
   getUserByEmail(email,(err,emisor_identification) =>{
     if(err){
@@ -151,11 +151,12 @@ export const showBandejaEntradaCoordinador = (req,res) => {
 }
 
 export const bandejaEntradaCoordinador = (req,res) => {
-  const email = req.session.username;
+  const email = req.session.useremail;
   notificarUser (email,(err, results) =>{
     if(err){
       console.log(err)
     } else{
+      console.log("Datos encontrados para Bandeja de entrada");
       console.log(results);
       res.render('coordinadorBandejaEntrada',{
         data:results
@@ -169,7 +170,7 @@ export const showBandejaEntradaDocente = (req,res) => {
 }
 
 export const bandejaEntradaDocente = (req,res) => {
-  const email = req.session.username;
+  const email = req.session.useremail;
   notificarUser (email,(err, results) =>{
     if(err){
       console.log(err)
@@ -230,7 +231,7 @@ export const showBandejaEntradaDecano = (req,res) => {
 }
 
 export const bandejaEntradaDecano = (req,res) => {
-  const email = req.session.username;
+  const email = req.session.useremail;
   notificarUser (email,(err, results) =>{
     if(err){
       console.log(err)
