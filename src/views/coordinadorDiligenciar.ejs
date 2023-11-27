@@ -9,129 +9,19 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-******************************" crossorigin="anonymous">
-    <style>
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .navbar-brand {
-            flex-grow: 1;
-        }
-        
-        .table-container {
-            margin-left: -100px;
-            margin-right: auto;
-            margin-top: 0px; 
-            overflow: auto;
-            
-            overflow-y: hidden;
-            width: 250%;
-        }
-        
-        .custom-nav {
-            display: flex;
-            align-items: center;
-        }
-        .create-link {
-            margin-right: 9000px; 
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-        }
-
-        .navbar-brand {
-            padding: 5;
-        }
-        
-        .navbar {
-            position: relative;
-            z-index: 1;
-        }
-
-        details {
-            position: relative;
-            display: inline-block;
-            z-index: 2;
-        }
-
-        details summary {
-            cursor: pointer;
-        }
-
-        details ul {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            display: none;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            background-color: #9b1a1a;
-        }
-
-        details ul li {
-            width: 100%;
-        }
-
-        details ul li a {
-            display: block;
-            padding: 10px;
-            color: #fff;
-            text-decoration: none;
-            width: 200px;
-        }
-        details summary {
-            cursor: pointer;
-            white-space: nowrap; 
-        }
-        details ul li a:hover {
-            background-color: #555;
-        }
-
-        details[open] ul {
-            display: block;
-        }
-        .fondo{
-            background-image: url(img/fondo2.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            margin-top: -20px;
-            height: 740px;
-        }
-       
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 
-    <nav class="navbar navbar-dark  navbar-expand-lg">
-        <div class="navbar-brand"> 
-            <a>realizar autoevaluacion</a>
-            <details>
-                <summary>&#9776;</summary>
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="btn btn-info" href="/coordinadorBandejaEntrada">Bandeja de entrada</a></li>
-                    <li class="nav-item"><a class="btn btn-info" href="/coordinadorListPeriods">Crear periodo académico</a></li>
-                    <li class="nav-item"><a class="btn btn-info" href="/coordinadorCrudAutoevaluacion">Gestion autoevaluación</a></li>
-                    <li class="nav-item"><a class="btn btn-info" href="/coordinadorCRUDuser">Gestión docente</a></li>
-                    <li class="nav-item"><a class="btn btn-info" href="/coordinadorCrudLabor">Gestión labores</a></li>
-                </ul>
-            </details>
-        </div>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"> 
-                <a class="navbar-brand home-link" href="/coordinadorPrincipal"> 
-                    <i class="fas fa-home"></i>
-                </a>
-            </li>
-        </ul>
+    <nav class="navbar bg-dark">
+        <form class="container-fluid justify-content-between" style="margin-top: 10px;">
+            <a class="navbar-brand home-link" href="/coordinadorPrincipal"><i class="fas fa-home"></i></a>
+            <a class="btn btn-info" href="/coordinadorBandejaEntrada">Bandeja de entrada</a>
+            <a class="btn btn-primary" href="/coordinadorListPeriods">Periodo academico</a>
+            <a class="btn btn-primary" href="/coordinadorCreateLaborView">Registrar Labor</a>
+            <a class="btn btn-primary" href="/coordinadorCrudAutoevaluacion">Gestion autoevaluación</a>
+            <a class="btn btn-primary" href="/coordinadorCRUDuser">Gestión Docentes</a></li>
+        </form>
     </nav>
     <br>
    
@@ -203,7 +93,7 @@
             </div>
         </div>
     </div>
-    <h3>Total horas: <%= totalLaborHours %></h3>
+    <h3 style="text-align: center; color: white; margin-top: 30px;">Total horas: <%= totalLaborHours %></h3>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <% if(typeof alert != "undefined") { %>
         <script>
@@ -211,8 +101,8 @@
                 title: '<%= alertTitle %>' ,
                 text: '<%= alertMessage %>',
                 icon: '<%= alertIcon %>',
-                showConfirmationButton: '<%= showConfirmButton %>',
-                timer:'<%= timer %>'
+                showConfirmationButton: <%= showConfirmButton %>,
+                timer:<%= timer %>
             }).then(()=>{
                 window.location='/<%= ruta %>'
             })
